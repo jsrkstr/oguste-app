@@ -3,17 +3,13 @@
  */
 
 const Languages = {
-  ar: {
-    name: 'Arabic',
-    nativeName: 'العربية',
+  fr: {
+    name: 'French',
+    nativeName: 'Fraçais',
   },
   en: {
     name: 'English',
     nativeName: 'English',
-  },
-  tr: {
-    name: 'Turkish',
-    nativeName: 'Türkçe',
   },
 }
 

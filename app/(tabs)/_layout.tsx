@@ -19,7 +19,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="index"
         options={{
-          title: Locales.t('titleHome'),
+          title: Locales.t('chat'),
           headerRight: () => (
             <>
               <Tooltip title={Locales.t('search')}>
@@ -63,7 +63,7 @@ const TabLayout = () => {
             <MaterialCommunityIcons
               {...props}
               size={24}
-              name={props.focused ? 'home' : 'home-outline'}
+              name={props.focused ? 'magnify-expand' : 'magnify'}
             />
           ),
         }}
@@ -71,7 +71,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="profile"
         options={{
-          title: Locales.t('profile'),
+          title: Locales.t('properties'),
           headerRight: () => (
             <>
               <Tooltip title={Locales.t('search')}>
@@ -92,7 +92,36 @@ const TabLayout = () => {
             <MaterialCommunityIcons
               {...props}
               size={24}
-              name={props.focused ? 'account' : 'account-outline'}
+              name={props.focused ? 'office-building' : 'office-building-outline'}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="user-profile"
+        options={{
+          title: Locales.t('properties'),
+          headerRight: () => (
+            <>
+              <Tooltip title={Locales.t('search')}>
+                <Appbar.Action
+                  icon="magnify"
+                  onPress={() => router.push('/search')}
+                />
+              </Tooltip>
+              <Tooltip title={Locales.t('titleSettings')}>
+                <Appbar.Action
+                  icon="cog"
+                  onPress={() => router.push('/(tabs)/settings')}
+                />
+              </Tooltip>
+            </>
+          ),
+          tabBarIcon: (props) => (
+            <MaterialCommunityIcons
+              {...props}
+              size={24}
+              name={props.focused ? 'office-building' : 'office-building-outline'}
             />
           ),
         }}
@@ -100,7 +129,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="settings"
         options={{
-          title: Locales.t('titleSettings'),
+          title: Locales.t('news'),
           headerRight: () => (
             <Tooltip title={Locales.t('drawerNav')}>
               <Appbar.Action
@@ -113,7 +142,7 @@ const TabLayout = () => {
             <MaterialCommunityIcons
               {...props}
               size={24}
-              name={props.focused ? 'cog' : 'cog-outline'}
+              name={props.focused ? 'newspaper-variant' : 'newspaper-variant-outline'}
             />
           ),
         }}

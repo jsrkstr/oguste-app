@@ -1,0 +1,53 @@
+/**
+ * French Translations
+ */
+
+const French = {
+  login: 'Se connecter',
+  signup: "S'inscrire",
+  profile: 'Profil',
+  chat: 'Discussion',
+  properties: 'Biens',
+  news: 'Actualités',
+  options: 'Options',
+  search: 'Rechercher',
+  stackNav: 'Navigation par pile',
+  drawerNav: 'Navigation par tiroir',
+  appearance: 'Apparence',
+  language: 'Langue',
+  changeLanguage: "Changer la langue de l'application",
+  system: 'Système',
+  mode: 'Mode',
+  changeMode: 'Basculer entre le mode clair et sombre',
+  lightMode: 'Clair',
+  darkMode: 'Sombre',
+  color: 'Couleur',
+  changeColor: 'Changer la couleur du thème',
+  changeScreenCode:
+    'Modifiez n\'importe quel texte, enregistrez le fichier, et votre application se mettra automatiquement à jour',
+  goHome: 'Aller à l\'écran d\'accueil',
+  openScreenCode: 'Ouvrir le code pour cet écran',
+  save: 'Enregistrer',
+  screen404: "Cet écran n'existe pas",
+  titleHome: 'Accueil',
+  titleModal: 'Modal',
+  titleNotFound: 'Non trouvé',
+  titleSettings: 'Paramètres',
+  restartApp: 'Redémarrez l\'application pour appliquer les modifications',
+  notAvailable: 'Expo SecureStore n\'est pas disponible pour le web',
+  adaptive: 'adaptatif',
+  default: 'par défaut',
+  orange: 'orange',
+  red: 'rouge',
+  violet: 'violet',
+  indigo: 'indigo',
+  blue: 'bleu',
+  teal: 'sarcelle',
+  cyan: 'cyan',
+  green: 'vert',
+  lime: 'citron vert',
+  olive: 'olive',
+  brown: 'marron',
+}
+
+export default French

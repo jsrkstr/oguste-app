@@ -4,16 +4,15 @@
 
 import { I18n } from 'i18n-js'
 
-import Arabic from '@/lib/locales/ar'
+import French from '@/lib/locales/fr'
 import English from '@/lib/locales/en'
-import Turkish from '@/lib/locales/tr'
 
 const Locales = new I18n({
-  ar: Arabic,
+  fr: French,
   en: English,
-  tr: Turkish,
 })
 
+Locales.defaultLocale = 'fr'
 Locales.enableFallback = true
 
 export { Locales }
