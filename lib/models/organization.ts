@@ -1,19 +1,31 @@
 import { makeAutoObservable } from 'mobx';
-import Apartment from './Apartment';
+import Property from './property';
 
 class Organization {
   id: string;
-  name: string;
-  apartments: Apartment[] = [];
+  name?: string;
+  metadata?: any;
+  created_at?: string;
+  updated_at?: string;
+  properties: Property[] = [];
 
-  constructor(id: string, name: string) {
-    this.id = id;
-    this.name = name;
-    makeAutoObservable(this);
-  }
+  constructor(
+    id: string,
+    name?: string,
+    metadata?: any,
+    created_at?: string,
+    updated_at?: string,
+  ) {
+  this.id = id;
+  this.name = name;
+  this.metadata = metadata;
+  this.created_at = created_at;
+  this.updated_at = updated_at;
+  makeAutoObservable(this);
+}
 
-  addApartment(apartment: Apartment) {
-    this.apartments.push(apartment);
+  addProperty(property: Property) {
+    this.properties.push(property);
   }
 }
 

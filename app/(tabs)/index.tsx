@@ -11,8 +11,8 @@ const TabsHome = () => {
 
   const onSearchBarFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
     console.log('onSearchBarFocus');
-    e.preventDefault();
-    e.stopPropagation();
+    // e.preventDefault();
+    // e.stopPropagation();
     // router.push('/(auth)/login');
   };
 
@@ -45,7 +45,6 @@ const TabsHome = () => {
           onFocus={(e) => onSearchBarFocus(e)}
           placeholder="Type here to search..."
           style={{ marginTop: 16, marginHorizontal: 16 }}
-          pointerEvents="none"
         />
       </View>
     </Surface>
