@@ -1,7 +1,16 @@
 import axiosInstance from './axios-instance';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface LoginResponse {
     access_token: string;
+}
+
+export const setAuthHeaders = async () => {
+    const token: string | null = await AsyncStorage.getItem('access_token');
+    if (token) {
+        axiosInstance.defaults.headers.common['token'] = token;
+        axiosInstance.defaults.headers['token'] = token;
+    }
 }
 
 export const login = async (username: string, password: string): Promise<LoginResponse> => {
@@ -18,8 +27,9 @@ export const login = async (username: string, password: string): Promise<LoginRe
 
         // Add the received token to axios instance options
         const token = response.data.access_token;
-        axiosInstance.defaults.headers.common['token'] = token;
-        axiosInstance.defaults.headers['token'] = token;
+        // Store the token in async storage
+        await AsyncStorage.setItem('access_token', token);
+        await setAuthHeaders();
 
         return response.data;
     } catch (error) {

@@ -5,6 +5,7 @@ import Organization from '../models/organization';
 class RootStore {
   user: User | null = null;
   organization: Organization | null = null;
+  loading: boolean = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -16,6 +17,10 @@ class RootStore {
 
   setOrganization(organization: Organization) {
     this.organization = organization;
+  }
+
+  setLoading(loading: boolean) {
+    this.loading = loading;
   }
 }
 

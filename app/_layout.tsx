@@ -8,14 +8,18 @@ import {
 } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
 import * as Localization from 'expo-localization'
-import { SplashScreen, Stack } from 'expo-router'
+import { router, SplashScreen, Stack } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Platform, useColorScheme } from 'react-native'
 import { adaptNavigationTheme, PaperProvider } from 'react-native-paper'
 
 import { Locales, Setting, StackHeader, Themes } from '@/lib'
+import { setAuthHeaders } from '@/lib/api/auth-service'
+import { fetchUserData } from '@/lib/api/user-service'
+import User from '@/lib/models/user'
+import rootStore from '@/lib/stores/root-store'
 
 // Catch any errors thrown by the Layout component.
 export { ErrorBoundary } from 'expo-router'
@@ -27,6 +31,32 @@ export const unstable_settings = { initialRouteName: '(tabs)' }
 SplashScreen.preventAutoHideAsync()
 
 const RootLayout = () => {
+  const [errorData, setDataError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const loadUserData = async () => {
+    try {
+        rootStore.setLoading(true);
+        setLoading(true);
+        await setAuthHeaders();
+        const userData = await fetchUserData();
+        const user = new User(userData.id, userData.first_name, userData.last_name, userData.email);
+        rootStore.setUser(user);
+    } catch (err) {
+        router.push('/(auth)/login');
+        setDataError('Failed to load user data');
+    } finally {
+        rootStore.setLoading(false);
+        setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!rootStore.user) {
+      loadUserData();
+    }
+  }, []);
+
   const [loaded, error] = useFonts({
     NotoSans_400Regular,
     JetBrainsMono_400Regular,
@@ -39,10 +69,10 @@ const RootLayout = () => {
   }, [error])
 
   React.useEffect(() => {
-    if (loaded) {
+    if (loaded && !loading) {
       SplashScreen.hideAsync()
     }
-  }, [loaded])
+  }, [loaded, loading])
 
   if (!loaded) {
     return null

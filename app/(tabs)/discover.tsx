@@ -23,7 +23,7 @@ import {
   styles,
 } from '@/lib'
 
-const Settings = () => {
+const TabsDiscover = () => {
   const colorScheme = useColorScheme()
   const [loading, setLoading] = React.useState<boolean>(false)
   const [message, setMessage] = React.useState({ visible: false, content: '' })
@@ -272,7 +272,7 @@ const Settings = () => {
       <Surface elevation={0} style={styles.screen}>
         <ScreenInfo
           title={Locales.t('titleSettings')}
-          path="app/(tabs)/settings.tsx"
+          path="app/(tabs)/discover.tsx"
         />
       </Surface>
 
@@ -314,4 +314,4 @@ const Settings = () => {
   )
 }
 
-export default Settings
+export default TabsDiscover

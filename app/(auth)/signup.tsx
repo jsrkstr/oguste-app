@@ -156,7 +156,10 @@ const SignUp = () => (
               </HelperText>
             </Surface>
 
-            <Button mode="contained" onPress={() => handleSubmit()}>
+            <Button
+              mode="contained"
+              onPress={() => handleSubmit()}
+            >
               Sign up
             </Button>
           </>

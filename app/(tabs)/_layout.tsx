@@ -1,12 +1,12 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { Tabs, router } from 'expo-router'
-import React from 'react'
 import { Appbar, Menu, Tooltip } from 'react-native-paper'
 
 import { Locales, TabBar, TabsHeader } from '@/lib'
+import { useState } from 'react'
 
 const TabLayout = () => {
-  const [visible, setVisible] = React.useState(false)
+  const [visible, setVisible] = useState(false)
 
   return (
     <Tabs
@@ -18,6 +18,35 @@ const TabLayout = () => {
     >
       <Tabs.Screen
         name="index"
+        options={{
+          title: Locales.t('properties'),
+          headerRight: () => (
+            <>
+              <Tooltip title={Locales.t('search')}>
+                <Appbar.Action
+                  icon="magnify"
+                  onPress={() => router.push('/search')}
+                />
+              </Tooltip>
+              <Tooltip title={Locales.t('titleSettings')}>
+                <Appbar.Action
+                  icon="cog"
+                  onPress={() => router.push('/(tabs)/discover')}
+                />
+              </Tooltip>
+            </>
+          ),
+          tabBarIcon: (props) => (
+            <MaterialCommunityIcons
+              {...props}
+              size={24}
+              name={props.focused ? 'office-building' : 'office-building-outline'}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="chat"
         options={{
           title: Locales.t('chat'),
           headerRight: () => (
@@ -44,7 +73,7 @@ const TabLayout = () => {
                 <Menu.Item
                   title={Locales.t('titleSettings')}
                   leadingIcon="cog"
-                  onPress={() => router.push('/(tabs)/settings')}
+                  onPress={() => router.push('/(tabs)/discover')}
                 />
                 <Menu.Item
                   title={Locales.t('stackNav')}
@@ -69,36 +98,7 @@ const TabLayout = () => {
         }}
       />
       <Tabs.Screen
-        name="profile"
-        options={{
-          title: Locales.t('properties'),
-          headerRight: () => (
-            <>
-              <Tooltip title={Locales.t('search')}>
-                <Appbar.Action
-                  icon="magnify"
-                  onPress={() => router.push('/search')}
-                />
-              </Tooltip>
-              <Tooltip title={Locales.t('titleSettings')}>
-                <Appbar.Action
-                  icon="cog"
-                  onPress={() => router.push('/(tabs)/settings')}
-                />
-              </Tooltip>
-            </>
-          ),
-          tabBarIcon: (props) => (
-            <MaterialCommunityIcons
-              {...props}
-              size={24}
-              name={props.focused ? 'office-building' : 'office-building-outline'}
-            />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
+        name="discover"
         options={{
           title: Locales.t('news'),
           headerRight: () => (

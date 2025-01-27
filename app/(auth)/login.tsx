@@ -110,7 +110,12 @@ const Login = () => {
               </HelperText>
             </Surface>
 
-            <Button mode="contained" onPress={() => handleSubmit()}>
+            <Button
+              mode="contained"
+              onPress={() => handleSubmit()}
+              loading={loading}
+              disabled={loading}
+              >
               Login
             </Button>
           </>

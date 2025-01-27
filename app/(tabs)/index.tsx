@@ -1,54 +1,38 @@
-import React from 'react'
-import { Searchbar, Surface } from 'react-native-paper'
+import React, { useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { View, Text } from 'react-native';
+import rootStore from '@/lib/stores/root-store';
+import { router } from 'expo-router';
+import { Button, Surface } from 'react-native-paper'
+import { Locales, styles, ScreenInfo } from '@/lib';
 
-import { Locales, ScreenInfo, styles } from '@/lib'
-import { NativeSyntheticEvent, TextInputFocusEventData, View } from 'react-native'
-import { router } from 'expo-router'
+const TabsProperty = observer(() => {
 
-const TabsHome = () => {
-  const [query, setQuery] = React.useState('')
-  const [loading, setLoading] = React.useState(false)
+    return (
+        <Surface style={styles.screen}>
+            <ScreenInfo title={Locales.t('profile')} path="app/(tabs)/index.tsx" />
 
-  const onSearchBarFocus = (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-    console.log('onSearchBarFocus');
-    // e.preventDefault();
-    // e.stopPropagation();
-    // router.push('/(auth)/login');
-  };
+            <Text>Loading: {rootStore.loading ? 'Yes' : 'No'}</Text>
+            <Text>User: {rootStore.user?.first_name}</Text>
+            <Text>Organization: {rootStore.organization?.name}</Text>
+            {rootStore.organization?.properties.map((property) => (
+                <View key={property.id}>
+                    <Text>Property: {property.name}</Text>
+                    {property.documents.map((doc) => (
+                        <Text key={doc.id}>Document: {doc.summary}</Text>
+                    ))}
+                    {property.conversations.map((conv) => (
+                        <View key={conv.id}>
+                            <Text>Conversation ID: {conv.id}</Text>
+                            {conv.messages.map((msg) => (
+                                <Text key={msg.id}>Message: {msg.content}</Text>
+                            ))}
+                        </View>
+                    ))}
+                </View>
+            ))}
+        </Surface>
+    );
+});
 
-  return (
-    <Surface style={styles.screen}>
-      <View style={{
-        flex: 2,
-        width: '100%',
-        // borderColor: 'blue',
-        // borderWidth: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-        <ScreenInfo
-          title={Locales.t('titleHome')}
-          path="app/(tabs)/index.tsx"
-        />
-      </View>
-      <View style={{
-        flex: 1,
-        width: '100%',
-        // borderColor: 'blue',
-        // borderWidth: 2,
-        justifyContent: 'flex-end',
-      }}>
-        <Searchbar
-          value={query}
-          loading={loading}
-          onChangeText={(v) => setQuery(v)}
-          onFocus={(e) => onSearchBarFocus(e)}
-          placeholder="Type here to search..."
-          style={{ marginTop: 16, marginHorizontal: 16 }}
-        />
-      </View>
-    </Surface>
-  );
-}
-
-export default TabsHome
+export default TabsProperty;
