@@ -47,7 +47,7 @@ const TabLayout = () => {
       <Tabs.Screen
         name="search"
         options={{
-          title: Locales.t('search'),
+          title: Locales.t('chat'),
           headerRight: () => (
             <>
               <Tooltip title={Locales.t('search')}>

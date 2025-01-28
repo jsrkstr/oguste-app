@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { List, Searchbar, Surface, Text } from 'react-native-paper'
+import { FAB, List, Searchbar, Surface, Text } from 'react-native-paper'
 
 import { Locales, PropertyInfo, styles } from '@/lib'
 import { NativeSyntheticEvent, TextInputFocusEventData, View } from 'react-native'
@@ -21,16 +21,27 @@ const PropertyScreen = observer(() => {
   return (
     <Surface style={styles.screen}>
       <View style={{
-        // flex: 2,
+        flex: 1,
         width: '100%',
         gap: 16,
         // alignItems: 'center',
         // justifyContent: 'center',
       }}>
-        {/* <Text>Property {property?.name}</Text> */}
+            {/* <Text>Property {property?.name}</Text> */}
             <PropertyInfo id={propertyId}></PropertyInfo>
             <PropertyDocuments id={propertyId}></PropertyDocuments>
             <PropertyConversations id={propertyId}></PropertyConversations>
+            <FAB
+                icon="square-edit-outline"
+                style={{
+                    position: 'absolute',
+                    marginRight: 16,
+                    marginBottom: 32,
+                    right: 0,
+                    bottom: 0,
+                }}
+                onPress={() => router.push(`/chat/new?propertyId=${propertyId}`)}
+            />
       </View>
     </Surface>
   );

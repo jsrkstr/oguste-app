@@ -59,6 +59,9 @@ const StackHeader = (props: StackHeaderProps) => {
         )}
       />
 
+      <Appbar.Action icon="square-edit-outline" onPress={() => {}} />
+      <Appbar.Action icon="dots-vertical" onPress={() => {}} />
+
       {props.navProps.options.headerRight
         ? props.navProps.options.headerRight({
             canGoBack: props.navProps.navigation.canGoBack(),

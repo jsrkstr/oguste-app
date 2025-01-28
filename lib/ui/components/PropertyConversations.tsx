@@ -1,4 +1,4 @@
-import { Avatar, Card, Chip, List, Text } from 'react-native-paper'
+import { Avatar, Card, Chip, Divider, List, Text } from 'react-native-paper'
 
 import { Locales } from '@/lib/locales'
 
@@ -23,12 +23,14 @@ const PropertyConversations = observer((props: { id: string; }) => {
       left={props => <List.Icon {...props} icon="chat-outline" />}
     >
       { property?.conversations.map((conversation: Conversation) =>
-        <List.Item
-          title={conversation.label}
-          onPress={() => router.push(`/chat/${conversation.id}?propertyId=${props.id}`)}
-          style={{ borderBottomWidth: 1, borderBottomColor: "#ccc" }}
-          key={conversation.id}
-        />
+        <>
+          <List.Item
+            title={conversation.label}
+            onPress={() => router.push(`/chat/${conversation.id}?propertyId=${props.id}`)}
+            key={conversation.id}
+          />
+          <Divider key={conversation.id} />
+        </>
       )}
       { !property?.conversations?.length &&
         <List.Item

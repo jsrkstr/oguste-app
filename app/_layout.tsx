@@ -196,7 +196,7 @@ const RootLayoutNav = () => {
       <PaperProvider theme={theme}>
         <Stack
           screenOptions={{
-            animation: 'slide_from_bottom',
+            animation: 'fade',
             header: (props) => (
               <StackHeader navProps={props} children={undefined} />
             ),

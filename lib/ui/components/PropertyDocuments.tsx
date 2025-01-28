@@ -1,4 +1,4 @@
-import { Avatar, Card, Chip, List, Text } from 'react-native-paper'
+import { Avatar, Card, Chip, Divider, List, Text } from 'react-native-paper'
 
 import { Locales } from '@/lib/locales'
 
@@ -22,10 +22,13 @@ const PropertyDocuments = observer((props: { id: string; }) => {
       left={props => <List.Icon {...props} icon="folder-outline" />}
     >
      { property?.documents.map((document: Document) =>
-        <List.Item
-          title={document.summary}
-          style={{ borderBottomWidth: 1, borderBottomColor: "#ccc" }}
-        />
+        <>
+          <List.Item
+            title={document.summary}
+            key={document.id}
+          />
+          <Divider key={document.id} />
+        </>
       )}
       { !property?.documents?.length &&
         <List.Item

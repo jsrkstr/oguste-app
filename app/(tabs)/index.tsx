@@ -11,7 +11,9 @@ const TabsProperty = observer(() => {
     return (
         <Surface style={styles.screen}>
             {rootStore.organisation?.properties.map((property) => (
-                <Card onPress={() => {router.push(`/property/${property.id}`)}}>
+                <Card
+                    key={property.id}
+                    onPress={() => {router.push(`/property/${property.id}`)}}>
                     <Card.Title
                         title={property.name}
                         subtitle={property.description}
