@@ -1,9 +1,11 @@
 import React from 'react'
-import { Searchbar, Surface } from 'react-native-paper'
+import { Searchbar, Surface, Text } from 'react-native-paper'
 
-import { Locales, ScreenInfo, styles } from '@/lib'
+import { Locales, PropertyInfo, styles } from '@/lib'
+import { useLocalSearchParams } from 'expo-router';
 
-const Search = () => {
+const ChatScreen = () => {
+  const { chatId }: { chatId: string } = useLocalSearchParams();
   const [query, setQuery] = React.useState('')
   const [loading, setLoading] = React.useState(false)
 
@@ -28,11 +30,9 @@ const Search = () => {
         style={{ marginTop: 16, marginHorizontal: 16 }}
       />
 
-      <Surface style={styles.screen}>
-        <ScreenInfo title={Locales.t('search')} path="app/search.tsx" />
-      </Surface>
+      <Text>chatId - {chatId}</Text>
     </Surface>
   )
 }
 
-export default Search
+export default ChatScreen

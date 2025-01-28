@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import Property from './property';
 
-class Organization {
+class Organisation {
   id: string;
   name?: string;
   metadata?: any;
@@ -29,4 +29,4 @@ class Organization {
   }
 }
 
-export default Organization;
+export default Organisation;

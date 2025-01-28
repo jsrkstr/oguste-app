@@ -20,6 +20,9 @@ import { setAuthHeaders } from '@/lib/api/auth-service'
 import { fetchUserData } from '@/lib/api/user-service'
 import User from '@/lib/models/user'
 import rootStore from '@/lib/stores/root-store'
+import Organisation from '@/lib/models/organisation'
+import Property from '@/lib/models/property'
+import Conversation from '@/lib/models/conversation'
 
 // Catch any errors thrown by the Layout component.
 export { ErrorBoundary } from 'expo-router'
@@ -34,17 +37,69 @@ const RootLayout = () => {
   const [errorData, setDataError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
+  interface UserDataConversation {
+    id: string;
+    property_id: string;
+    user_id: string;
+    label: string;
+  }
+
+  interface UserDataProperty {
+    id: string;
+    name: string;
+    description: string;
+    organisation_id: string;
+    user_id: string;
+    conversations: [UserDataConversation];
+  }
+
+  interface UserData {
+    id: string;
+    first_name: string;
+    last_name: string;
+    email: string;
+    organisation: {
+      id: string;
+      name: string;
+    }
+    properties: [UserDataProperty];
+  }
+
   const loadUserData = async () => {
     try {
         rootStore.setLoading(true);
         setLoading(true);
         await setAuthHeaders();
-        const userData = await fetchUserData();
+        const userData: UserData = await fetchUserData();
         const user = new User(userData.id, userData.first_name, userData.last_name, userData.email);
+        const organisation = new Organisation(
+          userData.organisation.id,
+          userData.organisation.name,
+        );
+        userData.properties?.forEach((property: UserDataProperty) => {
+          const propertyModel = new Property(
+            property.id,
+            property.name,
+            property.description,
+            property.organisation_id,
+            property.user_id,
+          );
+          property.conversations?.forEach((conversation: UserDataConversation) => {
+            propertyModel.addConversation(new Conversation(
+              conversation.id,
+              conversation.property_id,
+              conversation.user_id,
+              conversation.label,
+            ))
+          })
+          organisation.addProperty(propertyModel);
+        });
         rootStore.setUser(user);
+        rootStore.setOrganisation(organisation);
     } catch (err) {
         router.push('/(auth)/login');
         setDataError('Failed to load user data');
+        console.log(err)
     } finally {
         rootStore.setLoading(false);
         setLoading(false);

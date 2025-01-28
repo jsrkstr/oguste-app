@@ -3,6 +3,10 @@
  */
 
 const French = {
+  'noDocuments': 'Aucun document trouvé',
+  'noConversations': 'Aucune conversation trouvée',
+  documents: 'Documents',
+  conversations: 'Conversations',
   login: 'Se connecter',
   signup: "S'inscrire",
   profile: 'Profil',

@@ -18,7 +18,7 @@ import {
   Languages,
   LoadingIndicator,
   Locales,
-  ScreenInfo,
+  PropertyInfo,
   Setting,
   styles,
 } from '@/lib'
@@ -270,9 +270,8 @@ const TabsDiscover = () => {
       )}
 
       <Surface elevation={0} style={styles.screen}>
-        <ScreenInfo
-          title={Locales.t('titleSettings')}
-          path="app/(tabs)/discover.tsx"
+        <PropertyInfo
+          id={'1'}
         />
       </Surface>
 

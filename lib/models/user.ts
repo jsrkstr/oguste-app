@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import Organization from './organization';
+import Organisation from './organisation';
 
 class User {
   id: string;
@@ -11,7 +11,7 @@ class User {
   metadata?: any;
   created_at?: string;
   updated_at?: string;
-  organization: Organization | null = null;
+  organisation: Organisation | null = null;
 
   constructor(
       id: string,

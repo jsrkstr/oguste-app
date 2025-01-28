@@ -25,13 +25,12 @@ const TabLayout = () => {
               <Tooltip title={Locales.t('search')}>
                 <Appbar.Action
                   icon="magnify"
-                  onPress={() => router.push('/search')}
                 />
               </Tooltip>
               <Tooltip title={Locales.t('titleSettings')}>
                 <Appbar.Action
                   icon="cog"
-                  onPress={() => router.push('/(tabs)/discover')}
+                  // onPress={() => router.push('/(tabs)/discover')}
                 />
               </Tooltip>
             </>
@@ -40,15 +39,15 @@ const TabLayout = () => {
             <MaterialCommunityIcons
               {...props}
               size={24}
-              name={props.focused ? 'office-building' : 'office-building-outline'}
+              name={props.focused ? 'home-city' : 'home-city-outline'}
             />
           ),
         }}
       />
       <Tabs.Screen
-        name="chat"
+        name="search"
         options={{
-          title: Locales.t('chat'),
+          title: Locales.t('search'),
           headerRight: () => (
             <>
               <Tooltip title={Locales.t('search')}>
@@ -92,7 +91,7 @@ const TabLayout = () => {
             <MaterialCommunityIcons
               {...props}
               size={24}
-              name={props.focused ? 'magnify-expand' : 'magnify'}
+              name={props.focused ? 'comment-search' : 'comment-search-outline'}
             />
           ),
         }}

@@ -5,10 +5,12 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { Appbar, Menu, Tooltip, useTheme } from 'react-native-paper'
 
 import { DrawerContent, DrawerHeader, Locales } from '@/lib'
+import { useWindowDimensions } from 'react-native'
 
 const DrawerLayout = () => {
   const theme = useTheme()
   const [visible, setVisible] = React.useState(false)
+  const dimensions = useWindowDimensions();
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -22,6 +24,7 @@ const DrawerLayout = () => {
           />
         )}
         screenOptions={{
+          drawerType: dimensions.width >= 768 ? 'permanent' : 'front',
           drawerStyle: {
             backgroundColor: theme.colors.background,
             paddingTop: 32,

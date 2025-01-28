@@ -2,11 +2,11 @@ import { router } from 'expo-router'
 import React from 'react'
 import { Button, Surface } from 'react-native-paper'
 
-import { Locales, ScreenInfo, styles } from '@/lib'
+import { Locales, PropertyInfo, styles } from '@/lib'
 
 const Profile = () => (
   <Surface style={styles.screen}>
-    <ScreenInfo title={Locales.t('profile')} path="app/(tabs)/profile.tsx" />
+    <PropertyInfo title={Locales.t('profile')} path="app/(tabs)/profile.tsx" />
 
     <Surface
       elevation={0}

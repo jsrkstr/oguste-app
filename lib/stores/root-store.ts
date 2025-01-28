@@ -1,10 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 import User from '../models/user';
-import Organization from '../models/organization';
+import Organisation from '../models/organisation';
 
 class RootStore {
   user: User | null = null;
-  organization: Organization | null = null;
+  organisation: Organisation | null = null;
   loading: boolean = false;
 
   constructor() {
@@ -15,8 +15,8 @@ class RootStore {
     this.user = user;
   }
 
-  setOrganization(organization: Organization) {
-    this.organization = organization;
+  setOrganisation(organisation: Organisation) {
+    this.organisation = organisation;
   }
 
   setLoading(loading: boolean) {

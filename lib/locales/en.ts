@@ -3,6 +3,10 @@
  */
 
 const English = {
+  'noDocuments': 'No documents found',
+  'noConversations': 'No conversations found',
+  documents: 'Documents',
+  conversations: 'Conversations',
   login: 'Log in',
   signup: 'Sign up',
   profile: 'Profile',

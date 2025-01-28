@@ -18,7 +18,7 @@ import {
   Languages,
   LoadingIndicator,
   Locales,
-  ScreenInfo,
+  PropertyInfo,
   Setting,
   styles,
 } from '@/lib'
@@ -270,7 +270,7 @@ const Settings = () => {
       )}
 
       <Surface elevation={0} style={styles.screen}>
-        <ScreenInfo
+        <PropertyInfo
           title={Locales.t('titleSettings')}
           path="app/(tabs)/settings.tsx"
         />

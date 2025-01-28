@@ -1,7 +1,7 @@
 import React from 'react'
 import { Searchbar, Surface } from 'react-native-paper'
 
-import { Locales, ScreenInfo, styles } from '@/lib'
+import { Locales, PropertyInfo, styles } from '@/lib'
 import { NativeSyntheticEvent, TextInputFocusEventData, View } from 'react-native'
 import { router } from 'expo-router'
 import rootStore from '@/lib/stores/root-store'
@@ -29,9 +29,8 @@ const TabsChat = observer(() => {
         justifyContent: 'center',
       }}>
         { rootStore.user &&
-          <ScreenInfo
-            title={Locales.t('titleHome')}
-            path="app/(tabs)/chat.tsx"
+          <PropertyInfo
+            id={'1'}
           />
         }
       </View>

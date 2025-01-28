@@ -5,6 +5,7 @@ import Conversation from './conversation';
 class Property {
   id: string;
   name?: string;
+  description?: string;
   organisation_id?: string;
   user_id?: string;
   metadata?: any;
@@ -16,6 +17,7 @@ class Property {
   constructor(
     id: string,
     name?: string,
+    description?: string,
     organisation_id?: string,
     user_id?: string,
     metadata?: any,
@@ -24,6 +26,7 @@ class Property {
   ) {
     this.id = id;
     this.name = name;
+    this.description = description;
     this.organisation_id = organisation_id;
     this.user_id = user_id;
     this.metadata = metadata;
