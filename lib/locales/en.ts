@@ -11,6 +11,7 @@ const English = {
   signup: 'Sign up',
   profile: 'Profile',
   chat: 'Chat',
+  property: 'Property',
   properties: 'Properties',
   news: 'News',
   options: 'Options',

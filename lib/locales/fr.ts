@@ -11,6 +11,7 @@ const French = {
   signup: "S'inscrire",
   profile: 'Profil',
   chat: 'Discussion',
+  property: 'Bien',
   properties: 'Biens',
   news: 'Actualités',
   options: 'Options',

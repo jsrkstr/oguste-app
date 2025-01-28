@@ -206,13 +206,17 @@ const RootLayoutNav = () => {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="drawer" options={{ headerShown: false }} />
           <Stack.Screen
-            name="search"
-            options={{ title: Locales.t('search') }}
+            name="property/[propertyId]"
+            options={{ title: Locales.t('property') }}
           />
           <Stack.Screen
-            name="modal"
-            options={{ title: Locales.t('titleModal'), presentation: 'modal' }}
+            name="chat/[chatId]"
+            options={{ title: Locales.t('chat') }}
           />
+          {/* <Stack.Screen
+            name="modal"
+            options={{ title: "mymodal", presentation: 'modal' }}
+          /> */}
         </Stack>
       </PaperProvider>
 

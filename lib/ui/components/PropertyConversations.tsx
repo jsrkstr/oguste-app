@@ -25,7 +25,7 @@ const PropertyConversations = observer((props: { id: string; }) => {
       { property?.conversations.map((conversation: Conversation) =>
         <List.Item
           title={conversation.label}
-          onPress={() => router.push(`/chat/${conversation.id}`)}
+          onPress={() => router.push(`/chat/${conversation.id}?propertyId=${props.id}`)}
           style={{ borderBottomWidth: 1, borderBottomColor: "#ccc" }}
           key={conversation.id}
         />
