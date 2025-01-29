@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     // borderColor: 'blue',
     // borderWidth: 2,
   },
+  authScreen: {
+    flex: 1,
+    gap: 8,
+    padding: 16,
+  },
 })
 
 export { Colors, Themes, styles }

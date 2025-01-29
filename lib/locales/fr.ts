@@ -5,6 +5,7 @@
 const French = {
   'noDocuments': 'Aucun document trouvé',
   'noConversations': 'Aucune conversation trouvée',
+  logout: 'Deconnection',
   documents: 'Documents',
   conversations: 'Conversations',
   login: 'Se connecter',

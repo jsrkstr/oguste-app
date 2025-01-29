@@ -3,13 +3,18 @@ import { observer } from 'mobx-react-lite';
 import { View } from 'react-native';
 import rootStore from '@/lib/stores/root-store';
 import { router } from 'expo-router';
-import { Avatar, Button, Card, List, Surface, Text } from 'react-native-paper'
+import { ActivityIndicator, Avatar, Button, Card, List, Surface, Text } from 'react-native-paper'
 import { Locales, styles, PropertyInfo } from '@/lib';
 
 const TabsProperty = observer(() => {
 
     return (
         <Surface style={styles.screen}>
+            { rootStore.loading &&
+                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                    <ActivityIndicator />
+                </View>
+            }
             {rootStore.organisation?.properties.map((property) => (
                 <Card
                     key={property.id}

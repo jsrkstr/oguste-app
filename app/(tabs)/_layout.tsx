@@ -70,9 +70,9 @@ const TabLayout = () => {
                 }
               >
                 <Menu.Item
-                  title={Locales.t('titleSettings')}
-                  leadingIcon="cog"
-                  onPress={() => router.push('/(tabs)/discover')}
+                  title={Locales.t('logout')}
+                  leadingIcon="logout-variant"
+                  onPress={() => router.push('/login?logout=true')}
                 />
                 <Menu.Item
                   title={Locales.t('stackNav')}

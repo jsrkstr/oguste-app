@@ -37,3 +37,9 @@ export const login = async (username: string, password: string): Promise<LoginRe
         throw error;
     }
 };
+
+export const logout = async () => {
+    await AsyncStorage.removeItem('access_token');
+    delete axiosInstance.defaults.headers.common['token'];
+    delete axiosInstance.defaults.headers['token'];
+};

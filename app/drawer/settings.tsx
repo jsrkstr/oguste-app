@@ -71,7 +71,7 @@ const Settings = () => {
         <Surface elevation={0}>
           <List.AccordionGroup>
             <List.Accordion
-              id="1"
+              key="1"
               title={Locales.t('appearance')}
               left={(props) => <List.Icon {...props} icon="palette" />}
             >

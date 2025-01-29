@@ -24,18 +24,19 @@ const PropertyConversations = observer((props: { id: string; }) => {
       left={props => <List.Icon {...props} icon="chat-outline" />}
     >
       { property?.conversations.map((conversation: Conversation) =>
-        <>
+        <View key={conversation.id + '-view'} style={{ padding: 0 }}>
           <List.Item
             title={conversation.label}
             // onPress={() => router.push(`/chat/${conversation.id}?propertyId=${property.id}`)}
             onPress={() => router.push(`/search?chatId=${conversation.id}&propertyId=${property.id}`)}
-            key={conversation.id}
+            key={conversation.id + '-item'}
           />
-          <Divider key={conversation.id + 'divider'} />
-        </>
+          <Divider key={conversation.id + '-divider'} />
+        </View>
       )}
       { !property?.conversations?.length &&
         <List.Item
+          key="noConversation"
           title={Locales.t('noConversations')}
           titleStyle={{ color: '#aaa' }}
         />

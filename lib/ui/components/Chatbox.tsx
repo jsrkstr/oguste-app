@@ -9,7 +9,7 @@ import { observer } from 'mobx-react-lite';
 import Message from '@/lib/models/message';
 import Property from '@/lib/models/property';
 import Conversation from '@/lib/models/conversation';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import MessageBox from './MessageBox';
 
 
@@ -34,7 +34,7 @@ const Chatbox = observer(({ chatId, propertyId }: { chatId?: string, propertyId?
 
     const scrollToEnd = React.useCallback(() => {
         setTimeout(() => {
-            scrollViewRef?.scrollToEnd({ animated: false });
+            scrollViewRef && scrollViewRef.scrollToEnd({ animated: false });
         }, 100);
     }, [scrollViewRef]);
 
@@ -122,17 +122,18 @@ const Chatbox = observer(({ chatId, propertyId }: { chatId?: string, propertyId?
             </Card>
 
             <ScrollView
+                key="chatScrollView"
                 ref={(ref) => {setScrollViewRef(ref)}}
                 showsVerticalScrollIndicator={false}
                 style={{ marginHorizontal: 16 }}
             >
-                <Text style={{ marginVertical: 16 }}>chatId - {chatId} - {selectedPropertyId}</Text>
-                {messages.map((message: Message, i: number) => <>
+                {/* <Text style={{ marginVertical: 16 }}>chatId - {chatId} - {selectedPropertyId}</Text> */}
+                {messages.map((message: Message, i: number) => <View key={message.id}>
                     { i % 2 == 0 ?
-                        <Text key={message.id} style={{ marginVertical: 8 }}>{message.content}</Text>:
-                        <MessageBox key={message.id} message={message}/>
+                        <Text style={{ marginVertical: 8 }}>{message.content}</Text>:
+                        <MessageBox message={message}/>
                     }
-                </>)
+                </View>)
                 }
             </ScrollView>
             

@@ -5,6 +5,7 @@
 const English = {
   'noDocuments': 'No documents found',
   'noConversations': 'No conversations found',
+  logout: 'Logout',
   documents: 'Documents',
   conversations: 'Conversations',
   login: 'Log in',

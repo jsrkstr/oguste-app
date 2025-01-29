@@ -1,7 +1,7 @@
 import { Image } from 'expo-image'
-import { router } from 'expo-router'
+import { router, useLocalSearchParams } from 'expo-router'
 import { Formik } from 'formik'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Button,
   Surface,
@@ -13,20 +13,21 @@ import * as Yup from 'yup'
 
 import { styles } from '@/lib'
 import { Alert } from 'react-native'
-import { login } from '@/lib/api/auth-service'
+import { login, logout } from '@/lib/api/auth-service'
+import { loadUserData } from '@/lib/ui/helpers/user-data'
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const { logout : logoutQuery }: { logout: string } = useLocalSearchParams();
 
   const handleLogin = async (username: string, password: string) => {
     setLoading(true);
     try {
       await login(username, password);
-
-      Alert.alert('Login Successful');
-
+      console.log('Login Successful');
+      await loadUserData();
       router.push('/(tabs)');
     } catch (error) {
       Alert.alert('Login Failed', 'Please check your username and password.');
@@ -35,8 +36,14 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    if (logoutQuery === 'true') {
+      logout();
+    }
+  }, [])
+
   return (
-    <Surface style={{ ...styles.screen, alignItems: undefined }}>
+    <Surface style={{ ...styles.authScreen, alignItems: undefined }}>
       <Image
         alt="Logo"
         source={require('@/assets/images/icon.png')}
