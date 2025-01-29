@@ -16,7 +16,7 @@ const PropertyDocuments = observer((props: { id: string; }) => {
   return (
     <List.Accordion
       title={Locales.t('documents')}
-      id="2"
+      key="2"
       expanded={expanded}
       onPress={() => setExpanded(!expanded)}
       left={props => <List.Icon {...props} icon="folder-outline" />}
@@ -27,7 +27,7 @@ const PropertyDocuments = observer((props: { id: string; }) => {
             title={document.summary}
             key={document.id}
           />
-          <Divider key={document.id} />
+          <Divider key={document.id + 'divider'} />
         </>
       )}
       { !property?.documents?.length &&

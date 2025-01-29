@@ -9,6 +9,7 @@ import rootStore from '@/lib/stores/root-store';
 import Conversation from '@/lib/models/conversation';
 import { useState } from 'react';
 import { router } from 'expo-router';
+import { View } from 'react-native';
 
 const PropertyConversations = observer((props: { id: string; }) => {
   const [expanded, setExpanded] = useState(true);
@@ -17,7 +18,7 @@ const PropertyConversations = observer((props: { id: string; }) => {
   return (
     <List.Accordion
       title={Locales.t('conversations')}
-      id="3"
+      key="3"
       expanded={expanded}
       onPress={() => setExpanded(!expanded)}
       left={props => <List.Icon {...props} icon="chat-outline" />}
@@ -26,10 +27,11 @@ const PropertyConversations = observer((props: { id: string; }) => {
         <>
           <List.Item
             title={conversation.label}
-            onPress={() => router.push(`/chat/${conversation.id}?propertyId=${props.id}`)}
+            // onPress={() => router.push(`/chat/${conversation.id}?propertyId=${property.id}`)}
+            onPress={() => router.push(`/search?chatId=${conversation.id}&propertyId=${property.id}`)}
             key={conversation.id}
           />
-          <Divider key={conversation.id} />
+          <Divider key={conversation.id + 'divider'} />
         </>
       )}
       { !property?.conversations?.length &&

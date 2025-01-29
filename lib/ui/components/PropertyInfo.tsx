@@ -19,7 +19,7 @@ const PropertyInfo = observer((props: { id: string; }) => {
   return (
     <List.Accordion
       title="Details"
-      id="1"
+      key="1"
       expanded={expanded}
       onPress={() => setExpanded(!expanded)}
       left={props => <List.Icon {...props} icon="home-outline" />}

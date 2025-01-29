@@ -52,7 +52,7 @@ const TabLayout = () => {
             <>
               <Tooltip title={Locales.t('search')}>
                 <Appbar.Action
-                  icon="magnify"
+                  icon="square-edit-outline"
                   onPress={() => router.push('/search')}
                 />
               </Tooltip>
@@ -100,14 +100,14 @@ const TabLayout = () => {
         name="discover"
         options={{
           title: Locales.t('news'),
-          headerRight: () => (
-            <Tooltip title={Locales.t('drawerNav')}>
-              <Appbar.Action
-                icon="gesture-swipe"
-                onPress={() => router.push('/drawer')}
-              />
-            </Tooltip>
-          ),
+          // headerRight: () => (
+          //   <Tooltip title={Locales.t('drawerNav')}>
+          //     <Appbar.Action
+          //       icon="gesture-swipe"
+          //       onPress={() => router.push('/drawer')}
+          //     />
+          //   </Tooltip>
+          // ),
           tabBarIcon: (props) => (
             <MaterialCommunityIcons
               {...props}

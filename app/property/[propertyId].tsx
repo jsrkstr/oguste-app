@@ -40,7 +40,8 @@ const PropertyScreen = observer(() => {
                     right: 0,
                     bottom: 0,
                 }}
-                onPress={() => router.push(`/chat/new?propertyId=${propertyId}`)}
+                // onPress={() => router.push(`/chat/new?propertyId=${propertyId}`)}
+                onPress={() => router.push(`/search?chatId=new&propertyId=${propertyId}`)}
             />
       </View>
     </Surface>
